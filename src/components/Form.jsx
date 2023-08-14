@@ -67,6 +67,7 @@ const Form = ({ isSignUp }) => {
         value={userInput.email}
         onChange={handleInputChange}
         $checkError={emailError}
+        autoFocus
       >
         이메일
       </SignInput>

@@ -38,4 +38,24 @@ const Input = styled.input`
   &::placeholder {
     font-size: 11px;
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--white);
+    -webkit-box-shadow: 0 0 0px 1000px var(--dark-bg) inset;
+    box-shadow: 0 0 0px 1000px var(--dark-bg) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:autofill,
+  &:autofill:hover,
+  &:autofill:focus,
+  &:autofill:active {
+    -webkit-text-fill-color: var(--white);
+    -webkit-box-shadow: 0 0 0px 1000px var(--dark-bg) inset;
+    box-shadow: 0 0 0px 1000px var(--dark-bg) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `;
