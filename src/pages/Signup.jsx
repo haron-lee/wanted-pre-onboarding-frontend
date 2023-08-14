@@ -1,7 +1,8 @@
 import React from 'react';
+import Form from '../components/Form';
 
 const SignUp = () => {
-  return <div>회원가입</div>;
+  return <Form isSignUp={true} />;
 };
 
 export default SignUp;
