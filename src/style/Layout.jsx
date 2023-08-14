@@ -1,1 +1,17 @@
-// Layout
+import { styled, css } from 'styled-components';
+
+const CommonStyle = css`
+  padding: 30px 20px;
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-sizing: border-box;
+`;
+
+export const SignLayoutStyle = css`
+  ${CommonStyle}
+  width: 400px;
+`;
+
+export const SLayout = styled.div`
+  ${SignLayoutStyle}
+`;

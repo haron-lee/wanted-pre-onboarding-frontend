@@ -4,6 +4,26 @@ import reset from 'styled-reset';
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
+  :root {
+    --dark-bg: #23272a;
+    --bg: #2c2f33;
+    --gray-400: #b6c9d6;
+    --gray-500: #99aab5;
+    --gray-800: #76838d;
+    --white: #fff;
+    --primary: #7289da;
+    --secondary: #424551;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   button {
     border: none;
     background-color: inherit;
