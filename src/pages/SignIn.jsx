@@ -1,7 +1,8 @@
 import React from 'react';
+import Form from '../components/Form';
 
 const SignIn = () => {
-  return <div>로그인</div>;
+  return <Form isSignUp={false} />;
 };
 
 export default SignIn;
