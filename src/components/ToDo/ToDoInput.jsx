@@ -85,6 +85,7 @@ const NewToDo = styled.input`
   background-color: var(--bg);
   border-bottom: 1px solid var(--gray-500);
   box-sizing: border-box;
+  outline: none;
 
   &::placeholder {
     font-size: 11px;

@@ -10,7 +10,7 @@ const CommonStyle = css`
 
 export const SignLayoutStyle = css`
   ${CommonStyle}
-  width: 400px;
+  width: 450px;
 `;
 
 export const SLayout = styled.div`
