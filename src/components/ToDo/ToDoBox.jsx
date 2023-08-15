@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ToDoInput from './ToDoInput';
 import NewToDo from './NewToDo';
 import ToDos from '../../api/ToDos';
+import ToDoSkeleton from './ToDoSkeleton';
 
 const ToDoBox = () => {
   const { getTodo } = ToDos();
@@ -23,7 +24,7 @@ const ToDoBox = () => {
   };
 
   return isLoading ? (
-    <div>로딩 중...</div>
+    <ToDoSkeleton />
   ) : (
     <main>
       <ToDoInput onAdded={reloadData} />
