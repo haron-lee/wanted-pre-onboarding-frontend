@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     --gray-800: #76838d;
     --white: #fff;
     --primary: #7289da;
+    --light: #93a8f6;
     --secondary: #424551;
   }
 
