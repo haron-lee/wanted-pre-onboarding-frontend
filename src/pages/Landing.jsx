@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { SignLayoutStyle } from '../style/Layout';
 import { SLink, Title } from '../style/Common';
 import logo from '../assets/wanted.svg';
-import { Link } from 'react-router-dom';
 
 const Landing = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/todo');
+    }
+  }, [navigate]);
+
   return (
-    <main>
-      <Layout>
-        <STitleLayout>
-          <img src={logo} alt='원티드 로고' />
-          <Title>오늘의 할일</Title>
-        </STitleLayout>
-        <SLink to='/signin'>로그인</SLink>
-        <p> 아이디가 없으신가요? </p>
-        <SSignup to='/signup'>회원가입</SSignup>
-      </Layout>
-    </main>
+    <Layout>
+      <STitleLayout>
+        <img src={logo} alt='원티드 로고' />
+        <Title>오늘의 할일</Title>
+      </STitleLayout>
+      <SLink to='/signin'>로그인</SLink>
+      <p> 아이디가 없으신가요? </p>
+      <SSignup to='/signup'>회원가입</SSignup>
+    </Layout>
   );
 };
 
