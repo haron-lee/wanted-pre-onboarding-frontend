@@ -21,7 +21,8 @@ const Form = ({ isSignUp }) => {
   const navigate = useNavigate();
   const { basicInstance } = Instance();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (isValid) {
       // 유효성 검사 통과 시 폼 제출 처리
       if (isSignUp) {
@@ -55,7 +56,7 @@ const Form = ({ isSignUp }) => {
   };
 
   return (
-    <SFormLayout>
+    <SFormLayout onSubmit={handleSubmit}>
       <Title>{isSignUp ? '회원가입' : '로그인'}</Title>
       <SignInput
         id='user-email'
@@ -82,11 +83,7 @@ const Form = ({ isSignUp }) => {
         비밀번호
       </SignInput>
       {pwError && <ErrorMSG>{pwError}</ErrorMSG>}
-      <SignButton
-        onClick={handleSubmit}
-        signupBtn={isSignUp}
-        disabled={!isValid}
-      >
+      <SignButton type='submit' signupBtn={isSignUp} disabled={!isValid}>
         {isSignUp ? '가입하기' : '로그인'}
       </SignButton>
     </SFormLayout>
