@@ -18,6 +18,12 @@ const ToDoBox = () => {
     })();
   }, []);
 
+  const sortedData = data?.slice().sort((a, b) => {
+    if (a.isCompleted === b.isCompleted) return 0;
+    if (a.isCompleted && !b.isCompleted) return 1;
+    if (!a.isCompleted && b.isCompleted) return -1;
+  });
+
   const reloadData = async () => {
     const todos = await getTodo();
     setData(todos);
@@ -29,12 +35,8 @@ const ToDoBox = () => {
     <main>
       <ToDoInput onAdded={reloadData} />
       <ul>
-        {data?.map((todo) => (
-          <NewToDo
-            key={todo.id}
-            text={todo.todo}
-            isCompleted={todo.isCompleted}
-          />
+        {sortedData?.map((todo) => (
+          <NewToDo key={todo.id} todo={todo} onAdded={reloadData} />
         ))}
       </ul>
     </main>

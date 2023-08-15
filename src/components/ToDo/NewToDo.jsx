@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
+import ToDos from '../../api/ToDos';
 
-const NewToDo = ({ text }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const NewToDo = ({ todo, onAdded }) => {
+  const [isChecked, setIsChecked] = useState(todo.isCompleted);
+  const { updateTodo } = ToDos();
+
+  const updateCheckbox = async (id, todo, newIsChecked) => {
+    await updateTodo(id, todo, newIsChecked);
+    onAdded();
+  };
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+    const newIsChecked = !isChecked;
+    setIsChecked(newIsChecked);
+    updateCheckbox(todo.id, todo.todo, newIsChecked);
   };
 
   return (
@@ -17,7 +26,7 @@ const NewToDo = ({ text }) => {
           onChange={handleCheckboxChange}
         />
         <Checkmark $isChecked={isChecked} />
-        <span>{text}</span>
+        <span>{todo.todo}</span>
       </CheckBox>
     </NewToDOLayout>
   );
