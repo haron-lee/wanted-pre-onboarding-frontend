@@ -30,14 +30,21 @@ const ToDos = () => {
         todo: todo,
         isCompleted: isChecked,
       });
-      console.log('🚀  res:', res);
       return res;
     } catch (error) {
       console.error('updateError', error);
     }
   };
 
-  return { createTodo, getTodo, updateTodo };
+  const deleteTodo = async (id) => {
+    try {
+      await authInstance.delete(`todos/${id}`);
+    } catch (error) {
+      console.error('deleteError', error);
+    }
+  };
+
+  return { createTodo, getTodo, updateTodo, deleteTodo };
 };
 
 export default ToDos;

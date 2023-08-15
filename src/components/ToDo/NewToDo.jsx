@@ -6,7 +6,7 @@ import NewToDoBtn from './NewToDoBtn';
 const NewToDo = ({ todo, onAdded }) => {
   const [isChecked, setIsChecked] = useState(todo.isCompleted);
   const [newTodo, setNewTodo] = useState(todo.todo);
-  const { updateTodo } = ToDos();
+  const { updateTodo, deleteTodo } = ToDos();
   const [isModify, setIsModify] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -30,6 +30,11 @@ const NewToDo = ({ todo, onAdded }) => {
     } else {
       submitTodo();
     }
+  };
+
+  const handleDeleteTodo = async () => {
+    await deleteTodo(todo.id);
+    onAdded();
   };
 
   const updateCheckbox = async (id, todo, newIsChecked) => {
@@ -87,7 +92,7 @@ const NewToDo = ({ todo, onAdded }) => {
             <NewToDoBtn test='modify-button' onClick={handleModifySubmitBtn}>
               수정
             </NewToDoBtn>
-            <NewToDoBtn test='delete-button' $delete>
+            <NewToDoBtn test='delete-button' onClick={handleDeleteTodo} $delete>
               삭제
             </NewToDoBtn>
           </div>
