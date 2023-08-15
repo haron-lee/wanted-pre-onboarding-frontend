@@ -1,4 +1,4 @@
-import { Outlet, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Landing from './pages/Landing';
 import SignUp from './pages/SignUp';

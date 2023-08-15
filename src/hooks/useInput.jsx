@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const UseInput = () => {
   const [userInput, setUserInput] = useState({
@@ -7,10 +7,11 @@ const UseInput = () => {
   });
   const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
+  // eslint-disable-next-line
   const [isValid, setIsValid] = useState(false);
 
   const emailReg =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*[.][a-zA-Z]{2,3}$/i;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

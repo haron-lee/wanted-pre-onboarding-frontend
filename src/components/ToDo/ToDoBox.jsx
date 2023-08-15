@@ -16,12 +16,17 @@ const ToDoBox = () => {
       setData(todos);
       setIsLoading(false);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const sortedData = data?.slice().sort((a, b) => {
-    if (a.isCompleted === b.isCompleted) return 0;
-    if (a.isCompleted && !b.isCompleted) return 1;
-    if (!a.isCompleted && b.isCompleted) return -1;
+    if (a.isCompleted === b.isCompleted) {
+      return 0;
+    } else if (a.isCompleted && !b.isCompleted) {
+      return 1;
+    } else {
+      return -1;
+    }
   });
 
   const reloadData = async () => {
