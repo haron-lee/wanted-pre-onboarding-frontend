@@ -5,6 +5,7 @@ const CommonStyle = css`
   background-color: var(--bg);
   border-radius: 20px;
   box-sizing: border-box;
+  margin: 0 auto;
 `;
 
 export const SignLayoutStyle = css`

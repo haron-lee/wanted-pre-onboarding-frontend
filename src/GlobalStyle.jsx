@@ -14,15 +14,12 @@ const GlobalStyle = createGlobalStyle`
     --primary: #7289da;
     --light: #93a8f6;
     --secondary: #424551;
+    --delete: #EB5757;
   }
 
   body {
-    width: 100vw;
-    height: 100vh;
     background-color: var(--dark-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 300px;
   }
 
   button {
