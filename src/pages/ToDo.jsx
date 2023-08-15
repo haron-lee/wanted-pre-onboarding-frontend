@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { SLayout } from '../style/Layout';
 import { Title } from '../style/Common';
 import ToDoBox from '../components/ToDo/ToDoBox';
+import Signout from '../components/Signout';
 
 const ToDo = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const ToDo = () => {
 
   return (
     <>
+      <Signout />
       <SLayout>
         <Title>오늘도 화이팅!</Title>
         <ToDoBox />
