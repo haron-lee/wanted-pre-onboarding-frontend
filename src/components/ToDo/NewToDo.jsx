@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import ToDos from '../../api/ToDos';
+import NewToDoBtn from './NewToDoBtn';
 
 const NewToDo = ({ todo, onAdded }) => {
   const [isChecked, setIsChecked] = useState(todo.isCompleted);
+  const [newTodo, setNewTodo] = useState(todo.todo);
   const { updateTodo } = ToDos();
-
-  const updateCheckbox = async (id, todo, newIsChecked) => {
-    await updateTodo(id, todo, newIsChecked);
-    onAdded();
-  };
+  const [isModify, setIsModify] = useState(false);
 
   const handleCheckboxChange = () => {
     const newIsChecked = !isChecked;
@@ -17,17 +15,84 @@ const NewToDo = ({ todo, onAdded }) => {
     updateCheckbox(todo.id, todo.todo, newIsChecked);
   };
 
+  const handleNewTodo = (e) => {
+    setNewTodo(e.target.value);
+  };
+
+  const submitTodo = (e) => {
+    setIsModify(false);
+    updateCheckbox(todo.id, newTodo, isChecked);
+  };
+
+  const handleModifySubmitBtn = (e) => {
+    if (e.target.textContent === '수정') {
+      setIsModify(true);
+    } else {
+      submitTodo();
+    }
+  };
+
+  const updateCheckbox = async (id, todo, newIsChecked) => {
+    await updateTodo(id, todo, newIsChecked);
+    onAdded();
+  };
+
   return (
-    <NewToDOLayout $isChecked={isChecked}>
-      <CheckBox $isChecked={isChecked}>
-        <input
-          type='checkbox'
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-        />
-        <Checkmark $isChecked={isChecked} />
-        <span>{todo.todo}</span>
-      </CheckBox>
+    <NewToDOLayout $isChecked={isChecked} $isModify={isModify}>
+      {isModify ? (
+        <>
+          <ModifyLayout
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitTodo();
+            }}
+          >
+            <CheckBox $isChecked={isChecked}>
+              <Checkmark $isChecked={isChecked} $isModify={isModify} />
+            </CheckBox>
+            <input
+              type='text'
+              data-testid='modify-input'
+              checked={isChecked}
+              value={newTodo}
+              onChange={handleNewTodo}
+              autoFocus
+            />
+          </ModifyLayout>
+          <div>
+            <NewToDoBtn
+              test='submit-button'
+              type='submit'
+              onClick={handleModifySubmitBtn}
+            >
+              제출
+            </NewToDoBtn>
+            <NewToDoBtn test='cancel-button' onClick={() => setIsModify(false)}>
+              취소
+            </NewToDoBtn>
+          </div>
+        </>
+      ) : (
+        <>
+          <CheckBox $isChecked={isChecked}>
+            <input
+              type='checkbox'
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <Checkmark $isChecked={isChecked} />
+            <span>{todo.todo}</span>
+          </CheckBox>
+          <div>
+            <NewToDoBtn test='modify-button' onClick={handleModifySubmitBtn}>
+              수정
+            </NewToDoBtn>
+            <NewToDoBtn test='delete-button' $delete>
+              삭제
+            </NewToDoBtn>
+          </div>
+        </>
+      )}
     </NewToDOLayout>
   );
 };
@@ -35,8 +100,19 @@ const NewToDo = ({ todo, onAdded }) => {
 export default NewToDo;
 
 const NewToDOLayout = styled.li`
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
   color: var(--white);
+  padding: 10px;
+  border-radius: 10px;
+  background-color: ${(props) =>
+    props.$isModify ? 'var(--dark-bg)' : 'inherit'};
+
+  &:hover {
+    background-color: var(--dark-bg);
+  }
 `;
 
 const CheckBox = styled.label`
@@ -63,7 +139,7 @@ const Checkmark = styled.div`
   border-radius: 50%;
   transition: background-color 0.3s ease-in-out;
   left: 0;
-  top: 0;
+  top: ${(props) => (props.$isModify ? '8px' : '2px')};
 
   &:before {
     content: '';
@@ -75,5 +151,19 @@ const Checkmark = styled.div`
     border-radius: 50%;
     left: 1.5px;
     top: 1.5px;
+  }
+`;
+
+const ModifyLayout = styled.form`
+  input {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    color: var(--white);
+    margin-left: 20px;
+    background-color: var(--dark-bg);
+    border-radius: 10px;
+    outline: none;
+    font-size: 18px;
   }
 `;
