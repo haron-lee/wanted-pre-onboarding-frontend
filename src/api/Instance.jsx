@@ -4,6 +4,8 @@ import axios from 'axios';
 const Instance = () => {
   const URL = 'https://www.pre-onboarding-selection-task.shop/';
 
+  const token = localStorage.getItem('token');
+
   const basicInstance = axios.create({
     baseURL: URL,
     headers: {
@@ -14,7 +16,7 @@ const Instance = () => {
   const authInstance = axios.create({
     baseURL: URL,
     headers: {
-      // Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });

@@ -29,13 +29,12 @@ const Form = ({ isSignUp }) => {
         basicInstance
           .post('auth/signup', userInput)
           .then((res) => {
-            console.log(res);
             alert('회원가입에 성공했습니다. 로그인 페이지로 이동합니다.');
             setIsValid(false);
             navigate('/signin');
           })
           .catch((error) => {
-            console.log(error);
+            console.error(error);
             setPwError('이미 사용중인 이메일 입니다.');
           });
       } else {
@@ -43,13 +42,12 @@ const Form = ({ isSignUp }) => {
         basicInstance
           .post('auth/signin', userInput)
           .then((res) => {
-            console.log(res);
             setIsValid(false);
             navigate('/todo');
             localStorage.setItem('token', res.data.access_token);
           })
           .catch((error) => {
-            console.log(error);
+            console.error(error);
             setPwError('이메일 혹은 비밀번호가 맞지 않습니다.');
           });
       }
