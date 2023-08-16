@@ -18,7 +18,7 @@ export const SLink = styled(Link)`
 export const Title = styled.h1`
   display: block;
   margin-bottom: 30px;
-  font-size: 22px;
+  font-size: 26px;
   color: var(--white);
   text-align: center;
 `;

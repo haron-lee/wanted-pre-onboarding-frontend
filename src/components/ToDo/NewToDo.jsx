@@ -128,7 +128,7 @@ const CheckBox = styled.label`
 
   span {
     margin-left: 15px;
-    font-size: 18px;
+    font-size: 22px;
     color: ${(props) =>
       props.$isChecked ? 'var(--gray-800)' : 'var(--white)'};
     text-decoration: ${(props) => (props.$isChecked ? 'line-through' : 'none')};
@@ -169,6 +169,6 @@ const ModifyLayout = styled.form`
     background-color: var(--dark-bg);
     border-radius: 10px;
     outline: none;
-    font-size: 18px;
+    font-size: 22px;
   }
 `;

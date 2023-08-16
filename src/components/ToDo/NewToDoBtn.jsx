@@ -19,6 +19,7 @@ export default NewToDoBtn;
 const BtnStyle = styled.button`
   color: var(--gray-800);
   margin-right: 10px;
+  font-size: 14px;
 
   &:hover {
     color: ${(props) => (props.$delete ? 'var(--delete)' : 'var(--primary)')};

@@ -25,10 +25,11 @@ const SignoutBtn = styled.button`
   right: 30px;
   display: block;
   width: 120px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   color: white;
   background-color: var(--gray-800);
+  font-size: 18px;
 
   &:hover {
     background-color: #f6b132;

@@ -23,7 +23,7 @@ const Label = styled.label`
   margin-left: 5px;
   margin-bottom: 10px;
   color: var(--gray-400);
-  font-size: 13px;
+  font-size: 16px;
 `;
 
 const Input = styled.input`
@@ -36,7 +36,7 @@ const Input = styled.input`
   border-radius: 10px;
 
   &::placeholder {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   &:-webkit-autofill,

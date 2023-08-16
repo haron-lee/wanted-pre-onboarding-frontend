@@ -86,9 +86,10 @@ const NewToDo = styled.input`
   border-bottom: 1px solid var(--gray-500);
   box-sizing: border-box;
   outline: none;
+  font-size: 22px;
 
   &::placeholder {
-    font-size: 11px;
+    font-size: 16px;
     color: var(--gray-800);
   }
 `;
@@ -99,6 +100,7 @@ const AddBtn = styled.button`
   background-color: var(--primary);
   border-radius: 20px;
   flex-shrink: 0;
+  font-size: 16px;
 
   ${(props) =>
     props.disabled &&
