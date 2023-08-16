@@ -6,11 +6,20 @@
 
 <br>
 
+## 배포 링크
+
+https://what-todolist-today.netlify.app/
+
+![image](https://github.com/haron-lee/wanted-pre-onboarding-frontend/assets/88657261/92a4ace1-260e-4c47-88d8-9f96de649cfc)
+
+<br>
+
 ## 프로젝트 실행 방법
 
 ### 설치
 
 ```
+git clone https://github.com/haron-lee/wanted-pre-onboarding-frontend.git
 npm install
 ```
 
@@ -19,13 +28,3 @@ npm install
 ```
 npm start
 ```
-
-<br>
-
-## 배포 링크
-
-www.example.com
-
-### 데모 영상
-
-<br>
