@@ -19,8 +19,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: var(--dark-bg);
-    padding-top: 500px;
-    box-sizing: border-box;
   }
 
   button {
