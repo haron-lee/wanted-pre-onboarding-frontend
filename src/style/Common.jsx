@@ -24,7 +24,7 @@ export const Title = styled.h1`
 `;
 
 export const ErrorMSG = styled.p`
-  color: red;
+  color: var(--delete);
   font-size: 12px;
   margin-left: 10px;
   margin-bottom: 20px;
