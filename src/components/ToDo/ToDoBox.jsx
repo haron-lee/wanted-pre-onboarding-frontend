@@ -3,6 +3,7 @@ import ToDoInput from './ToDoInput';
 import NewToDo from './NewToDo';
 import ToDos from '../../api/ToDos';
 import ToDoSkeleton from './ToDoSkeleton';
+import { styled } from 'styled-components';
 
 const ToDoBox = () => {
   const { getTodo } = ToDos();
@@ -39,13 +40,31 @@ const ToDoBox = () => {
   ) : (
     <main>
       <ToDoInput onAdded={reloadData} />
-      <ul>
+      <ToDoList>
         {sortedData?.map((todo) => (
           <NewToDo key={todo.id} todo={todo} onAdded={reloadData} />
         ))}
-      </ul>
+      </ToDoList>
     </main>
   );
 };
 
 export default ToDoBox;
+
+const ToDoList = styled.ul`
+  max-height: 415px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: 3px;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: var(--primary); /* 스크롤바의 색상 */
+    border-radius: 10px;
+  }
+`;
